@@ -20,9 +20,11 @@ void merge(int arr[], int l, int r, int mid) {
 	}
 	while(j <= r) {
 		temp[k] = arr[j];
-		j++;k++;
+		j++;
+		k++;
 	}
-	for(int i = 0; i < r-l+1; i++) {
+	for(int i = 0; i < r-l+1; i++) 
+	{
 		arr[i+l] = temp[i];
 	}
 
