@@ -30,6 +30,13 @@ void ClearLastiBits(int &n, int i){
     n = n&mask;
 }
 
+void clearBitsInRange(int &n, int i, int j){
+    int a = (~0)<<(j+1);
+    int b = (1<<i)-1;
+    int mask = a|b;
+    n = n&mask;
+}
+
 int main() {
     int n, i, v;
     cin >> n >> i >> v;
@@ -43,6 +50,8 @@ int main() {
     UpdateIthBitWithValue(n, i, v);
     
     ClearLastiBits(n, i);
+    
+    clearBitsInRange(n, i, v);
     
     cout << n << endl;
 }
