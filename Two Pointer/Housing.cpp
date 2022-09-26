@@ -1,3 +1,7 @@
+// Problem Statement: Give a list of Plot areas and a target k area
+//                     we have to find out the smallest length fo continuous list of plots that can sum up to exactly == k;
+
+
 #include <iostream>
 #include<vector>
 
