@@ -42,9 +42,9 @@ int n_ladder_bottom_up(int n, int k){
 
 int main(){
     int n, k; cin >> n >> k;
-    cout <<"N Ladder ===========================> " << n_ladder_top_down(n, k) << endl;
+    cout <<"N Ladder n_ladder_top_down ===========================> " << n_ladder_top_down(n, k) << endl;
     
-    cout <<"N Ladder ===========================> " << n_ladder_bottom_up(n, k) << endl;
+    cout <<"N Ladder n_ladder_bottom_up ===========================> " << n_ladder_bottom_up(n, k) << endl;
 
     return 0;
 }
