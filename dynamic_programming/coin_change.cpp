@@ -5,23 +5,30 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int coin_change(vector<int> &coins, int amount){
+int coin_change(vector<int> &coins, int amount, vector<int> &dp){
     if(amount <= 0){
         return 0;
+    }
+    
+    if(dp[amount] != 0){
+        cout << dp[amount] << " " << amount << endl;
+        return dp[amount];
     }
     int mn = INT_MAX;
     for(int i = 0; i < coins.size(); i++){
         if(amount >= coins[i])
-            mn = min(mn, coin_change(coins, amount-coins[i]));
+            mn = min(mn, coin_change(coins, amount-coins[i], dp));
     }
-    return mn+1;
+    return dp[amount] = mn+1;
 }
+
 
 
 int main(){
     int amount;
     cout << "Enter amount: ";
     cin >> amount;
+    vector<int>dp(amount+1, 0);
     cout << endl << "Enter the number of types of coins: ";
     int n; cin >> n;
     vector<int> coins;
@@ -31,6 +38,6 @@ int main(){
         cin >> temp;
         coins.push_back(temp);
     }
-    cout << "minimum number of coins needed: " << coin_change(coins, amount) << "\n\n\n\n\n";
+    cout << endl << "Minimum number of coins needed: " << coin_change(coins, amount, dp) << "\n\n\n\n\n";
     return 0;
 }
