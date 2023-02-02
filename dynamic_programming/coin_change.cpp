@@ -22,7 +22,19 @@ int coin_change(vector<int> &coins, int amount, vector<int> &dp){
     return dp[amount] = mn+1;
 }
 
-
+int count_change_bottom_up(vector<int> &coins, int amount, vector<int> &dp){
+    if(amount == 0){
+        return 0;
+    }
+    for(int i = 1; i <= amount; i++){
+        for(int k = 0; k < coins.size(); k++){
+            if(i >= coins[k]){
+                dp[i] = min(dp[i], dp[i-coins[k]]+1);
+            }
+        }
+    }
+    return dp[amount];
+}
 
 int main(){
     int amount;
@@ -39,5 +51,7 @@ int main(){
         coins.push_back(temp);
     }
     cout << endl << "Minimum number of coins needed: " << coin_change(coins, amount, dp) << "\n\n\n\n\n";
+    
+    cout << endl << "count_change_bottom_up Minimum number of coins needed: " << count_change_bottom_up(coins, amount, dp) << "\n\n\n\n\n";
     return 0;
 }
