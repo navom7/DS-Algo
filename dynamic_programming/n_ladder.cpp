@@ -6,16 +6,19 @@
 #include<iostream>
 using namespace std;
 
-int n_ladder_top_down(int n, int k){
+int n_ladder_top_down(int n, int k, int *dp){
     if(n < 0)
         return 0;
     if(n == 0 || n == 1)
         return 1;
+    
+    if(dp[n] != 0)
+        return dp[n];
     int sum = 0;
     for(int i = 1; i <= k; i++){
-        sum += n_ladder_top_down(n-i, k);
+        sum += n_ladder_top_down(n-i, k, dp);
     }
-    return sum;
+    return dp[n] = sum;
 }
 
 
@@ -23,10 +26,8 @@ int n_ladder_bottom_up(int n, int k){
     if(n < 0)
         return 0;
     int arr[n+1] = {0};
-    arr[0] = 1;
-    arr[1] = 1;
-    arr[2] = 2;
-    for(int i = 3; i <= n; i++){
+    arr[0] = 1; 
+    for(int i = 1; i <= n; i++){
         int idx = 1;
         int temp = 0;
         while(idx <= k && (i-idx) >= 0){
@@ -40,9 +41,31 @@ int n_ladder_bottom_up(int n, int k){
 }
 
 
+
+int n_ladder_bottom_up(int n, int k){
+    if(n < 0)
+        return 0;
+    int arr[n+1] = {0};
+    arr[0] = 1; 
+    for(int i = 1; i <= n; i++){
+        int idx = 1;
+        int temp = 0;
+        while(idx <= k && (i-idx) >= 0){
+            temp += arr[i-idx];
+            idx++;
+        }
+        // cout << i << " " << temp << endl;
+        arr[i] = temp;
+    }
+    return arr[n];
+}
+
+
+
 int main(){
     int n, k; cin >> n >> k;
-    cout <<"N Ladder n_ladder_top_down ===========================> " << n_ladder_top_down(n, k) << endl;
+    int dp[n+1] = {0};
+    cout <<"N Ladder n_ladder_top_down ===========================> " << n_ladder_top_down(n, k, dp) << endl;
     
     cout <<"N Ladder n_ladder_bottom_up ===========================> " << n_ladder_bottom_up(n, k) << endl;
 
