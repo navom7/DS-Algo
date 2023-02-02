@@ -44,7 +44,7 @@ int n_ladder_bottom_up_optimized(int n, int k){
         return 0;
     int dp[n+1] = {0};
     dp[0] = 1; 
-
+ 
     for(int i = 1; i <= k; i++){
         for(int idx = 0; idx < i; idx++){
             dp[i] += dp[idx];
