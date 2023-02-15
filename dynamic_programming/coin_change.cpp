@@ -11,7 +11,7 @@ int coin_change(vector<int> &coins, int amount, vector<int> &dp){
     }
     
     if(dp[amount] != 0){
-        cout << dp[amount] << " " << amount << endl;
+        // cout << dp[amount] << " " << amount << endl;
         return dp[amount];
     }
     int mn = INT_MAX;
