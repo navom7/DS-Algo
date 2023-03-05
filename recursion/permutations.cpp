@@ -18,7 +18,5 @@ int main() {
     string str = "abc";
     int n = str.size();
     printPermutations(str, 0, n-1);
-    
-
     return 0;
 }
