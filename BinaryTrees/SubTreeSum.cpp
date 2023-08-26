@@ -1,5 +1,9 @@
+// 1 2 4 -1 -1 5 7 -1 -1 -1 3 -1 6 -1 -1
+
+
 #include<iostream>
 #include<queue>
+
 
 using namespace std;
 
@@ -15,6 +19,7 @@ public:
         left = NULL;
         right = NULL;
     }
+
 };
 
 Node* buildTree() {
@@ -37,6 +42,24 @@ int heightOfTree(Node* root) {
     int r = heightOfTree(root->right);
     return 1 + max(l, r);
 }
+
+
+int subTreeSum(Node* &root) {
+    if(root == NULL) {
+        return 0;
+    }
+    if(root->left == NULL && root->right == NULL) {
+        return root->data;
+    }
+    int temp = root->data;
+    int LS = subTreeSum(root->left);
+    int RS = subTreeSum(root->right);
+    root->data = LS+RS;
+    return temp+LS+RS;
+
+}
+
+
 
 
 void levelOrderPrint(Node* root) {
@@ -65,5 +88,6 @@ void levelOrderPrint(Node* root) {
 
 int main() {
     Node* root = buildTree();
-    cout << endl << heightOfTree(root) << endl;
+    int newRoot = subTreeSum(root);
+    levelOrderPrint(root);
 }

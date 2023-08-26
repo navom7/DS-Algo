@@ -13,12 +13,8 @@ public:
     Node(int d) {
         data = d;
         left = NULL;
-        right = NULL;;
-
-        []=-
-        
+        right = NULL;
     }
-
 };
 
 Node* buildTree() {
