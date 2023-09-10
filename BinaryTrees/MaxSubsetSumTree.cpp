@@ -53,7 +53,7 @@ TreeNode subTreeSum(Node* &root) {
     }
     TreeNode L = subTreeSum(root->left);
     TreeNode R = subTreeSum(root->right);
-    //including root data
+    //including root dataac
     int inc = root->data + L.exc + R.exc;
     //excluding root data
     int exc = max(L.inc, L.exc) + max(R.inc, R.exc);
