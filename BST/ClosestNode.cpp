@@ -56,7 +56,7 @@ int main() {
         root = insert(root, s);
     }
 
-    cout << findClosestInBST(root, 16);
+    cout << findClosestInBST(root, 12);
 
 
     return 0;
