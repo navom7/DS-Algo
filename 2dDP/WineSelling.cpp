@@ -18,6 +18,12 @@ int wines(int dp[][10], int arr[], int l, int r, int yr) {
 
 }
 
+
+//bottom up dp code
+int wines(int prices[], int n) {
+    
+}
+
 int main() {
 
     int a[] = {2,3,5,1,4};
