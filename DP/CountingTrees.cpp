@@ -32,6 +32,17 @@ int countBSTTopDOwn(int n, int dp[]) {
     return dp[n] = ans;
 }
 
+int countBSTBottomUp(int N) {
+    vector<int> dp(N+1, 0);
+    dp[1] = dp[0] = 1;
+    for(int n = 2; n <= N; n++) {
+        for(int j = 1; j <= n; j++) {
+            dp[n] += dp[j-1]*dp[n-j];
+        }
+    }
+    return dp[N];
+}
+
 int main() {
 
     int n; cin >> n;
@@ -41,6 +52,8 @@ int main() {
     cout << countBSTTopDOwn(n, dp) << endl;
 
     cout << countTrees(n) << endl;
+
+    cout << countBSTBottomUp(n) << endl;
 
     return 0;
 }
