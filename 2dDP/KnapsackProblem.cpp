@@ -20,6 +20,28 @@ int knapsack(int wts[], int prices[], int N, int W, vector<vector<int>> &dp) {
     return dp[N][W] = max(a, b);
 }
 
+int knapsackBU(int wts[], int prices[], int N, int W) {
+    
+    vector<vector<int>> dp(N+1, vector<int>(W + 1, 0));
+
+    for(int n = 1; n <= N; n++) {
+        for(int w = 1; w <= W; w++) {
+            int inc = 0;
+            if(w-wts[n-1] > 0)
+                inc = prices[n-1] + dp[n-1][w-wts[n-1]];
+            int exc = dp[n-1][w];
+            dp[n][w] = max(inc, exc);
+        }
+    }
+    for(auto x: dp) {
+        for(auto y: x) {
+            cout << y << " ";
+        }
+        cout << endl;
+    }
+    return dp[N][W];
+}
+
 
 int main() {
 
@@ -30,6 +52,8 @@ int main() {
 
     vector<vector<int>> dp(N+1, vector<int>(W + 1, 0));
     cout << knapsack(wts, prices, N, W, dp) << endl;
+
+    cout << knapsackBU(wts, prices, N, W) << endl;
 
     return 0;
 }
