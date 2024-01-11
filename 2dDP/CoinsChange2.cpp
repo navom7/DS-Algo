@@ -16,29 +16,71 @@
 // Explanation:
 // {1, 1, 1, 1}, {1, 1, 2}, {1, 3}, {2, 2} are different combinations having a sum of 4.
 
-#include<bits/stdc++.h>
-
+#include<iostream>
+#include<vector>
 using namespace std;
 
-long long coinsDP(int n, int i, vector<int> &coins, vector<vector<long long>> &dp){
-    if(n == 0) {
+long long coinsDP(int n, int i, int amount, vector<int> &coins, vector<vector<long long>> &dp){
+    if(amount == 0) {
+        cout << i << " " << endl;
         return 1;
     }
-    if(i <= 0) {
+    if(i == n || amount < 0) {
         return 0;
     }
-    if(dp[n][i] != 0) {
-        return dp[n][i];
-    }
-    long long inc = 0, exc = 0;
-    if(n >= coins[i-1]) {
-        inc = coinsDP(n-coins[i-1], i-1, coins, dp);
-    }
-    exc = coinsDP(n, i-1, coins, dp);
-    return dp[n][i] = inc+exc;
     
+    int inc1 = 0, inc2 = 0, exc = 0;
+    if(amount >= coins[i]) {
+        inc1 = coinsDP(n, i, amount-coins[i], coins, dp);
+        inc2 = coinsDP(n, i+1, amount-coins[i], coins, dp);
+    }
+    exc = coinsDP(n, i+1, amount, coins, dp);
+    
+    // cout << i << " " << amount << " " << inc1 << " " << inc2 << " " << exc << endl;
+    
+    return inc1 + inc2 + exc;
 }
+
+long long coin_combinations(int N, const vector<int>& COINS) {
+    vector<long long> dp(N + 1, 0);
+    dp[0] = 1;
+
+    for (int coin : COINS) {
+        for (int i = coin; i <= N; ++i) {
+            dp[i] += dp[i - coin];
+        }
+    }
+    for(auto x: dp) {
+        cout << x << " ";
+    }
+    cout << endl;
+    return dp[N];
+}
+
+
 long long findCombinations(int n, vector<int> coins){
-    vector<vector<long long>> dp(n, vector<long long> (coins.size(), 0));
-    return coinsDP(n, coins.size(), coins, dp);
+    vector<vector<long long>> dp(n+1, vector<long long> (coins.size()+1, 0));
+    long long res = coinsDP(coins.size(), 0, n, coins, dp);
+
+
+    // for(auto x: dp) {
+    //     for(auto y: x) {
+    //         cout << y << " ";
+    //     }
+    //     cout << endl;
+    // }
+    return res;
+}
+
+int main(){
+    int n = 4;
+    vector<int> coins = {1, 2, 3};
+    // for(int i = 0; i < 3; i++) {
+    //     cin >> coins[i];
+    // }
+
+    cout << coin_combinations(n, coins) << endl;
+
+
+    return 0;
 }
