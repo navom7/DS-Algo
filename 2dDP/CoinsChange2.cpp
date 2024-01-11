@@ -59,17 +59,14 @@ long long coin_combinations(int N, const vector<int>& COINS) {
 
 
 long long findCombinations(int n, vector<int> coins){
-    vector<vector<long long>> dp(n+1, vector<long long> (coins.size()+1, 0));
-    long long res = coinsDP(coins.size(), 0, n, coins, dp);
-
-
-    // for(auto x: dp) {
-    //     for(auto y: x) {
-    //         cout << y << " ";
-    //     }
-    //     cout << endl;
-    // }
-    return res;
+    vector<long long> dp(n+1, 0);
+    dp[0] = 1;
+    for(auto coin: coins) {
+        for(int i = coin; i <= n; i++) {
+            dp[i] += dp[i-coin];
+        }
+    }
+    return dp[n];
 }
 
 int main(){
@@ -78,7 +75,7 @@ int main(){
     // for(int i = 0; i < 3; i++) {
     //     cin >> coins[i];
     // }
-
+    cout << findCombinations(n, coins) << endl;
     cout << coin_combinations(n, coins) << endl;
 
 
