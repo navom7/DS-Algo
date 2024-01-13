@@ -1,7 +1,38 @@
+// Edit Distance
+// Given two strings str1 and str2 and below operations that can performed on str1. Find minimum number of edits (operations) required to convert ‘str1’ into ‘str2’. 
+// Insert
+// Remove
+// Replace
+// All of the above operations are of equal cost.
+// Input Format
+// Function contains two strings str1 and str2 as parameters.
+// Output Format
+// Return a single integer representing minimum number of operations required to convert str1 to str2
+// Constraints
+// 1 <= str1.length() <= 100
+// 1 <= str2.length() <= 100
+// Sample Testcases:
+// Input:   str1 = "geek", str2 = "gesek"
+// Output:  1
+// We can convert str1 into str2 by inserting a 's'.
+
+// Input:   str1 = "cat", str2 = "cut"
+// Output:  1
+// We can convert str1 into str2 by replacing 'a' with 'u'.
+
+// Input:   str1 = "sunday", str2 = "saturday"
+// Output:  3
+// Last three and first characters are same.  We basically
+// need to convert "un" to "atur".  This can be done using
+// below three operations.
+// Replace 'n' with 'r', insert t, insert a
+
+
+
+
 #include<iostream>
 #include<vector>
 using namespace std;
-
 int editDistanceRecursive(string s1, string s2, int i, int j, vector<vector<int>> &dp) {
     int m = s1.size();
     int n = s2.size();
@@ -25,19 +56,15 @@ int editDistanceRecursive(string s1, string s2, int i, int j, vector<vector<int>
     }
 }
 
-
 int editDistance(string str1, string str2){
     int m = str1.size();
     int n = str2.size();
     vector<vector<int>> dp(m+1, vector<int>(n+1, -1));
     return editDistanceRecursive(str1, str2, 0, 0, dp);
 }
-
 int main() {
     string s1 = "sunday";
     string s2 = "saturday";
-
-    cout << editDistance(s1, s2) << endl;
-
-    return 0;
+        cout << editDistance(s1, s2) << endl;
+        return 0;
 }
