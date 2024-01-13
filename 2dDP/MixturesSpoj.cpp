@@ -1,55 +1,44 @@
 #include<iostream>
 #include<vector>
+#include<climits>
 
 using namespace std;
 
-long long helperSmoke(vector<int> v, int i, vector<int> &dp) {
-    int n = v.size();
-    // cout << i << " " << n << endl;
-    // for(auto x: v) {
-    //     cout << x << " ";
-    // }
-    // cout << endl;
-    if(i >= n-1 || n <= 2) {
-        if(n == 1) {
-            return dp[0] = 0;
-        } else if(n == 2) {
-            return dp[1] = v[0]*v[1];
-        } else {
-            int smoke = v[n-1]*v[n-2];
-            int newColor = (v[n-1] + v[n-2])%100;
-            v.erase(v.begin() + n-1);
-            v[n-2] = newColor;
-            return dp[n-2] = smoke + helperSmoke(v, 0, dp);
-        }
+long long smoke(int s, int e, vector<int> &v) {
+    long long ans = 0;
+    for(int i = s; i <= e; i++) {
+        ans += v[i];
     }
-    if(dp[i] != 0)
-        return dp[i];
-    int a = 0, b = 0;
-    vector<int> temp = v;
-    int aSmoke = temp[i]*temp[i+1];
-    int newColourA = (temp[i] + temp[i+1])%100;
-    temp.erase(temp.begin() + i);
-    temp[i] = newColourA;
-    a = aSmoke + helperSmoke(temp, i, dp);
-    
-    b = helperSmoke(v, i+1, dp);
+    return ans%100;
+}
 
-    cout << a << " " << b << endl;
+long long helperSmoke(vector<int> v, int i, int j, vector<vector<long long>> &dp) {
     
-    return dp[i] = min(a,b);
+    if(i >= j) {
+        return 0;
+    }
+    if(dp[i][j] != -1) {
+        return dp[i][j];
+    }
+
+    dp[i][j] = INT_MAX;
+    for(int k = i; k <= j; k++) {
+        dp[i][j] = min(dp[i][j], helperSmoke(v, i, k, dp) + helperSmoke(v, k+1, j, dp) + smoke(i, k, v) * smoke(k+1, j, v));
+    }
+    return dp[i][j];
+    
 }
 
 long long minimumSmoke(vector<int> v){
+    int n = v.size();
+    vector<vector<long long>> dp(n, vector<long long>(n, -1));
 
-    vector<int> dp(v.size() + 1, 0);
-
-    return helperSmoke(v, 0, dp);
+    return helperSmoke(v, 0, n-1, dp);
 }
 
 
 int main() {
-    vector<int> v = {40, 60, 20, 80};
+    vector<int> v = {41, 67, 34, 0, 69, 24, 78, 58, 62, 64, 5, 45, 81, 27, 61, 91, 95, 42, 27, 36, 91, 4, 2, 53, 92, 82, 21, 16, 18, 95, 47, 26, 71, 38, 69, 12, 67, 99, 35, 94, 3, 11, 22, 33, 73, 64, 41, 11, 53, 68, 47, 44, 62, 57, 37, 59, 23, 41, 29, 78, 16, 35, 90, 42, 88, 6, 40, 42, 64, 48, 46, 5, 90, 29, 70, 50, 6, 1, 93, 48, 29, 23, 84, 54, 56, 40, 66, 76, 31, 8, 44, 39, 26, 23, 37, 38, 18, 82, 29, 41};
     
     
 
