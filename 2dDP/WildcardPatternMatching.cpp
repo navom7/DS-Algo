@@ -34,3 +34,10 @@ int main() {
 
     cout << patternMatching(input, pattern) << endl;
 }
+
+for(auto x: veca) {
+            cout << x << " ";
+        } cout << endl;
+        for(auto x: vecb) {
+            cout << x << " ";
+        } cout << endl;
