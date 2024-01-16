@@ -16,30 +16,40 @@ public:
 };
 
 
-bool compare(Node* a, Node* b) {
-    return a->nbrs.size() > b->nbrs.size();
+bool compare(pair<int, Node*> a, pair<int, Node*> b) {
+    return a.second->nbrs.size() > b.second->nbrs.size();
+}
+
+bool isOverlap(list<int> a, list<int> b) {
+    for(auto x: a) {
+        for(auto y: b) {
+            if(x == y)
+                return true;
+        }
+    }
+    return false;
 }
 
 
 class Graph{
-    vector<Node*> mp;
+    vector<pair<int,Node*>> mp;
 public:
     Graph(int v) {
-        mp = vector<Node*>(v);
+        mp = vector<pair<int, Node*>>(v);
         for(int i = 0; i < v; i++) {
-            mp[i] = new Node(i);
+            mp[i] = {i, new Node(i)};
         }
     }
 
     void addEdge(int i, int j) {
-        mp[i]->nbrs.push_back(j);
-        mp[j]->nbrs.push_back(i);
+        mp[i].second->nbrs.push_back(j);
+        mp[j].second->nbrs.push_back(i);
     }
 
     void printAdjList() {
         for(auto x: mp) {
-            cout << x->n << ": ";
-            for(auto y: x->nbrs) {
+            cout << x.first << ": ";
+            for(auto y: x.second->nbrs) {
                 cout << y << ", ";
             }
             cout << endl;
@@ -48,7 +58,10 @@ public:
 
     int findMaximalNetworks() {
         sort(mp.begin(), mp.end(), compare);
-        return mp[0]->nbrs.size() + mp[1]->nbrs.size();
+        int overlap = 0;
+        if(isOverlap(mp[0].second->nbrs, mp[1].second->nbrs))
+            overlap = 1;
+        return mp[0].second->nbrs.size() + mp[1].second->nbrs.size() - 1;
     }
 
 
