@@ -42,9 +42,9 @@ public:
 
     bool dfs(int source, vector<bool> &visited, vector<bool> &instack) {
         visited[source] = true;
+        instack[source] = true;
         for(auto x: l[source]) {
             if(!visited[x]) {
-                instack[x] = true;
                 bool backedgeFound = dfs(x, visited, instack);
                 if(backedgeFound)
                     return true;
@@ -67,13 +67,17 @@ bool solve(int n, vector<vector<int>>edges) {
         g.addEdge(x[0], x[1]);
     }
 
+
+    vector<bool> visited(n+1, false);
+    vector<bool> instack(n+1, false);
+
     for(int i = 1; i <= n; i++) {
-        vector<bool> visited(n+1, false);
-        vector<bool> instack(n+1, false);
-        bool foundCycle = g.dfs(i, visited, instack);
-        if(foundCycle) {
-            cout << " found! " << endl;
-            return true;
+        if(!visited[i]) {
+            bool foundCycle = g.dfs(i, visited, instack);
+            if(foundCycle) {
+                cout << " found! " << endl;
+                return true;
+            }
         }
     }
     cout << "not found!" << endl;
