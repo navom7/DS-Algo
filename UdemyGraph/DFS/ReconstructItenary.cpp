@@ -51,7 +51,7 @@ public:
         mp[a].insert(b);
     }
 
-    void dfsHelper(unordered_map<string, bool> &visited, string source, vector<string> &result){
+    void dfsHelper(string parent, string source, vector<string> &result){
         visited[source] = true;
         result.push_back(source);
         for(auto x: mp[source]) {
@@ -75,6 +75,7 @@ public:
 vector<string> findItinerary(vector<vector<string>> tickets) {
     sort(tickets.begin(), tickets.end(), customCompare);
     int N = tickets.size();
+    set<string>
 
     Graph g;
     for(auto x: tickets) {
