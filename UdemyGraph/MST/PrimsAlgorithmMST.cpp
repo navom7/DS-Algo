@@ -19,6 +19,37 @@ Input:
 
 Output:
 17
+
+
+
+
+
+
+How Prim's Algorithm Works:
+Initialization: Start with an empty set S that will eventually contain all the vertices of the MST. Select an arbitrary vertex to begin the MST and add it to S.
+
+Edge Selection: From the set of edges that connect vertices in S to vertices outside S, select the edge with the smallest weight and add it to the MST. Also, add the vertex at the other end of this edge to S.
+
+Repeat: Repeat step 2 until S includes all vertices of the graph.
+
+Completion: When all vertices are included in S, the MST is complete.
+
+Key Points:
+Prim's algorithm can start from any vertex, making it especially useful for dense graphs.
+It can be implemented using various priority queue data structures to select the minimum weight edge efficiently, such as a binary heap, a Fibonacci heap, or even a simple array.
+The complexity of Prim's algorithm depends on the data structures used for the priority queue. With a binary heap, the time complexity is 
+�
+(
+�
+log
+⁡
+�
+)
+O(ElogV), where 
+�
+E is the number of edges, and 
+�
+V is the number of vertices.
 */
 
 
