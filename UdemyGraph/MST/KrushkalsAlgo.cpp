@@ -18,7 +18,10 @@ V−1 edges in the MST, where
 V is the number of vertices in the original graph.
 
 Disjoint Set Union (DSU) in Kruskal's Algorithm
-Kruskal's algorithm relies heavily on the Disjoint Set Union (DSU) or Union-Find data structure to efficiently manage the sets of vertices and check for cycles. The DSU helps in quickly determining whether two vertices belong to the same set (or component) and thereby assists in cycle detection when considering whether to add an edge to the MST.
+Kruskal's algorithm relies heavily on the Disjoint Set Union (DSU) 
+or Union-Find data structure to efficiently manage the sets of vertices and check for cycles. 
+The DSU helps in quickly determining whether two vertices belong to the same set (or component) 
+and thereby assists in cycle detection when considering whether to add an edge to the MST.
 
 */
 
