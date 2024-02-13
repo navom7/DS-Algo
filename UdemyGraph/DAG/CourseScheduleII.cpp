@@ -29,6 +29,7 @@ Expected Time Complexity: O(V + E) where V represents the number of vertices and
 #include<iostream>
 #include<vector>
 #include<set>
+#include<queue>
 
 using namespace std;
 
@@ -76,3 +77,51 @@ vector<int> findOrder(int n, vector<vector<int>> prerequisites) {
     return {};
 }
 
+
+
+
+vector<int> findOrders(int n, vector<vector<int>> prerequisites) {
+    vector<int> indegree(n, 0);
+    vector<int> res;
+    vector<vector<int> > adjList(n);
+    priority_queue<int, vector<int>, greater<int>> q;
+    
+    for(auto edge: prerequisites) {
+        int x = edge[0];
+        int y = edge[1];
+        
+        indegree[x]++;
+        adjList[y].push_back(x);
+    }
+    
+    
+    for(int i = 0; i < n; i++) {
+        if(indegree[i] == 0) {
+            q.push(i);
+        }
+    }
+    
+    if(q.empty()) {
+        return {};
+    }
+    
+    while(!q.empty()) {
+        int f = q.top();
+        res.push_back(f);
+        q.pop();
+        for(auto nbr: adjList[f]) {
+            indegree[nbr]--;
+            if(indegree[nbr] == 0) {
+                q.push(nbr);
+            }
+        }
+    }
+    if(q.empty()) {
+        return res;
+    }
+    return {};
+}
+
+int main() {
+
+}
