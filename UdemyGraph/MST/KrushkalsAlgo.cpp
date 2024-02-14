@@ -1,5 +1,5 @@
-
 /*
+
 Kruskal's algorithm is a popular and efficient method for finding the Minimum Spanning Tree (MST) of a weighted graph. 
 A Minimum Spanning Tree of a graph is a subset of the edges that connects all the vertices together, without any cycles, and with the minimum possible total edge weight. 
 This algorithm is widely used in various applications, including designing networks, circuit design problems, and in the fields of computer science and operations research.
