@@ -23,6 +23,17 @@ Output:
 
 
 
+Prim's algorithm is a popular and efficient algorithm used in the field of 
+computer science for finding the minimum spanning tree (MST) of a connected, 
+undirected graph. A minimum spanning tree of a graph is a subset of the edges 
+that connects all vertices in the graph together, without any cycles, and with 
+the minimum possible total edge weight. Prim's algorithm is particularly useful in network design, 
+such as designing the least expensive network that connects a set of points 
+(e.g., computer networks, road networks).
+
+
+
+
 
 
 How Prim's Algorithm Works:
