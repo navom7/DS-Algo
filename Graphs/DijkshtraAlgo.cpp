@@ -1,3 +1,15 @@
+/*
+	Dijkstra's algorithm is a fundamental algorithm in computer science used for finding the shortest paths between nodes in a graph, which may represent, for example, road networks. It was conceived by computer scientist Edsger W. Dijkstra in 1956 and published three years later.
+
+The algorithm exists in many variants; the original version found the shortest path between two nodes, but a more common variant fixes a single node as the "source" node and finds shortest paths from the source to all other nodes in the graph, producing a shortest-path tree.
+
+Key Concepts
+Graphs: Dijkstra's algorithm applies to both directed and undirected graphs. All edges must have non-negative weights. This is because, in each step of the algorithm, it picks the node with the smallest distance from the source; negative weights could lead to a situation where a longer path reduces the overall path cost, which Dijkstra's algorithm won't handle correctly.
+Weighted Edges: Each edge of the graph has a weight (or cost), which represents the cost of moving from one vertex to another. This cost needs to be non-negative for Dijkstra's algorithm to work correctly.
+Shortest Path Tree: For a given source vertex, the algorithm finds the shortest path to every other vertex, forming a tree-like structure of the shortest paths from the source to all other vertices.
+*/
+
+
 #include<iostream>
 #include<climits>
 #include<set>
