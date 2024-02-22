@@ -34,6 +34,7 @@ Output : 2
 #include<iostream>
 #include<list>
 #include<vector>
+#include<set>
 using namespace std;
 
 class Graph{
@@ -50,10 +51,52 @@ public:
         l[v].push_back({wt, u});
     }
     
+    int dijkshtra(int source) {
+        vector<int> dist(V, INT_MAX);
+        set<pair<int,int>> s;
+        int ans = -1;
+        
+        s.insert({0, source});
+        dist[source] = 0;
+        
+        while(!s.empty()) {
+            auto it = s.begin();
+            int node = it->second;
+            int distTillNow = it->first;
+            s.erase(it);
+            
+            for(auto nbrPair: l[node]) {
+                int nbr = nbrPair.second;
+                int newEdge = nbrPair.first;
+                
+                if(dist[nbr] > distTillNow + newEdge) {
+                    auto found = s.find({dist[nbr], nbr});
+                    if(found != s.end()) {
+                        s.erase(found);
+                    }
+                    
+                    dist[nbr] = distTillNow + newEdge;
+                    ans = max(dist[nbr], ans);
+                    s.insert({dist[nbr], nbr});
+                }
+            }
+        }
+        for(int i = 1; i < V; i++) {
+            if(dist[i] == INT_MAX)
+                return -1;
+        }
+        return ans;
+    }
     
     
 };
 
 int networkDelayTime(vector<vector<int>> times, int n, int k) {
-    
+    Graph g(n+1);
+    cout << n << " " << k << endl;
+    for(auto x: times) {
+        cout << x[0] << " " << x[1] << " " << x[2] << endl;
+        g.addEdge(x[0], x[1], x[2]);
+    }
+    return g.dijkshtra(k);
 }
