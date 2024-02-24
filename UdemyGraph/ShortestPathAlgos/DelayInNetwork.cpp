@@ -48,7 +48,6 @@ public:
     
     void addEdge(int u, int v, int wt) {
         l[u].push_back({wt, v});
-        l[v].push_back({wt, u});
     }
     
     int dijkshtra(int source) {
