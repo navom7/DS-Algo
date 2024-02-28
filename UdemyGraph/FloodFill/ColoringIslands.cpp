@@ -1,5 +1,13 @@
 /*
 
+To find the largest island in a 1,0 matrix (often referred to as a binary matrix), 
+where 1 represents land and 0 represents water, you can use the Depth-First Search (DFS) algorithm. 
+The idea is to iterate over each cell in the matrix. When you encounter a cell with the value 1 (land), 
+you start a DFS from that cell to count the size of the island it belongs to, 
+marking visited land cells to avoid counting them more than once. After exploring the entire island, 
+you compare its size to the current largest island found and update the maximum size accordingly. 
+This process is repeated for all cells in the matrix to ensure all islands are considered.
+
 Coloring of island
 
 */
