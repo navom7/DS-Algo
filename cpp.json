@@ -1,0 +1,135 @@
+{
+    "Basic C++ Program Setup": {
+        "prefix": "basiccppsetup",
+        "body": [
+            "#include<iostream>",
+            "#include<climits>",
+            "#include<vector>",
+            "#include<list>",
+            "#include<queue>",
+            "#include<unordered_map>",
+            "",
+            "using namespace std;",
+            "",
+            "#define ll long long",
+            "#define um unordered_map",
+			"int R;",
+			"int C;",
+            "",
+			"",
+			"",
+            "int main() {",
+            "    $0",
+            "    return 0;",
+            "}"
+        ],
+        "description": "Sets up a basic C++ program with common includes and namespace."
+    },
+	"Iterate Over Container": {
+        "prefix": "arrone",
+        "body": [
+            "R = $1.size();",
+            "",
+            "for(int i = 0; i < R; i++) {",
+            "    $0",
+            "}"
+        ],
+        "description": "Iterates over a container by first capturing its size into variable R and then using a for loop."
+    },
+	"Iterate Over 2D Container": {
+        "prefix": "arrtwo",
+        "body": [
+            "R = $1.size();",
+            "C = $1[0].size();",
+            "",
+            "for(int i = 0; i < R; i++) {",
+            "    for(int j = 0; j < C; j++) {",
+            "        $0",
+            "    }",
+            "}"
+        ],
+        "description": "Iterates over a 2D container by first capturing its dimensions into variables R and C, then using nested for loops."
+    },
+	"Undirected Graph Class": {
+		"prefix": "undirGraph",
+		"body": [
+			"class UndirectedGraph{",
+			"    int V;",
+			"    list<int> *l;",
+			"public:",
+			"    UndirectedGraph(int n) {",
+			"        V = n;",
+			"        l = new list<int>[V];",
+			"    }",
+			"    void addEdge(int i, int j) {",
+			"        l[i].push_back(j);",
+			"        l[j].push_back(i);",
+			"    }",
+			"};",
+			"$0"
+		],
+		"description": "Class for undirected graph with basic operations."
+	},
+	"Undirected Weighted Graph Class": {
+		"prefix": "undirWeighted",
+		"body": [
+			"class UndirectedWeightedGraph{",
+			"    int V;",
+			"    list<pair<int,int>> *l;",
+			"public:",
+			"    UndirectedWeightedGraph(int n) {",
+			"        V = n;",
+			"        l = new list<pair<int,int>>[V];",
+			"    }",
+			"    void addEdge(int i, int j, int wt) {",
+			"        l[i].push_back({wt, j});",
+			"        l[j].push_back({wt, i});",
+			"    }",
+			"};",
+			"$0"
+		],
+		"description": "Class for undirected weighted graph with basic operations."
+	},
+	"Directed Graph Class": {
+		"prefix": "dirGraph",
+		"body": [
+			"class DirectedGraph{",
+			"    int V;",
+			"    list<int> *l;",
+			"public:",
+			"    DirectedGraph(int n) {",
+			"        V = n;",
+			"        l = new list<int>[V];",
+			"    }",
+			"    void addEdge(int i, int j) {",
+			"        l[i].push_back(j);",
+			"    }",
+			"};",
+			"$0"
+		],
+		"description": "Class for directed graph with basic operations."
+	},
+	"Directed Weighted Graph Class": {
+		"prefix": "dirWeigted",
+		"body": [
+			"class DirectedWeightedGraph{",
+			"    int V;",
+			"    list<pair<int,int>> *l;",
+			"public:",
+			"    DirectedWeightedGraph(int n) {",
+			"        V = n;",
+			"        l = new list<pair<int,int>>[V];",
+			"    }",
+			"    void addEdge(int i, int j, int wt) {",
+			"        l[i].push_back({wt, j});",
+			"    }",
+			"};",
+			"$0"
+		],
+		"description": "Class for directed weighted graph with basic operations."
+	}
+	
+	
+	
+	
+}
