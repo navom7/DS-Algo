@@ -6,14 +6,14 @@
 ```c++ //
     #include <set>
 
-
+```
 
 
 # Namespace:
 ```c++ //
     using namespace std;
 
-
+```
 
 
 # Initialization:
@@ -27,21 +27,21 @@
     // Copy constructor
     set<int> anotherSet(mySet.begin(), mySet.end());
 
-
+```
 
 
 # Insertion:
 ```c++ //
     mySet.insert(42); // Insert 42 into the set
 
-
+```
 
 
 # Deletion:
 ```c++ //
     mySet.erase(5); // Remove the element 5 from the set
 
-
+```
 
 
 # Iterating Over Elements:
@@ -51,7 +51,7 @@
     }
     cout << endl;
 
-
+```
 
 
 # Checking if Element Exists:
@@ -60,20 +60,20 @@
         cout << "Element 42 is in the set" << endl;
     }
 
-
+```
 
 
 # Size of Set:
 ```c++ //
     cout << "Size of set " << mySet.size() << endl;
-
+```
 
 
 # Clearing the Set:
 ```c++ //
     mySet.clear(); // Remove all elements from the set
 
-
+```
 
 
 # Checking if Set is Empty:
@@ -82,7 +82,7 @@
         cout << "Set is empty" << endl;
     }
 
-
+```
 
 
 # Iterators:
@@ -96,7 +96,7 @@
     }
     cout << endl;
 
-
+```
 
 
 # Finding and Counting Elements:
@@ -109,7 +109,7 @@
     int countOf5 = mySet.count(5); // Count occurrences of element 5
 
     cout << "Count of 5 in the set " << countOf5 << endl;
-
+```
 
 
 # Lower and Upper Bounds:
@@ -125,7 +125,7 @@
 
 
 
-
+```
 
 
 # Range-based For Loop:
@@ -134,7 +134,7 @@
     }
     cout << endl;
 
-
+```
 
 
 # Custom Comparator:
@@ -148,8 +148,7 @@
 
     // Set of strings with case-insensitive comparison
     set<string, CaseInsensitiveCompare> caseInsensitiveSet;
-
-
+```
 
 
 This cheat sheet covers the essential operations and usage patterns for set in C Remember to exercise caution when using using namespace std; in real-world projects to avoid potential naming conflicts and unintended behavior.
