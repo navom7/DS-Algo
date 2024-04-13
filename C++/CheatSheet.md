@@ -3,18 +3,21 @@
 
 
 # Include Header:
+```c++ //
     #include <set>
 
 
 
 
 # Namespace:
+```c++ //
     using namespace std;
 
 
 
 
 # Initialization:
+```c++ //
     // Empty set of integers
     set<int> mySet;
 
@@ -28,18 +31,21 @@
 
 
 # Insertion:
+```c++ //
     mySet.insert(42); // Insert 42 into the set
 
 
 
 
 # Deletion:
+```c++ //
     mySet.erase(5); // Remove the element 5 from the set
 
 
 
 
 # Iterating Over Elements:
+```c++ //
     for (auto it = mySet.begin(); it != mySet.end(); ++it) {
         cout << *it << " ";
     }
@@ -49,6 +55,7 @@
 
 
 # Checking if Element Exists:
+```c++ //
     if (mySet.find(42) != mySet.end()) {
         cout << "Element 42 is in the set" << endl;
     }
@@ -57,17 +64,20 @@
 
 
 # Size of Set:
+```c++ //
     cout << "Size of set " << mySet.size() << endl;
 
 
 
 # Clearing the Set:
+```c++ //
     mySet.clear(); // Remove all elements from the set
 
 
 
 
 # Checking if Set is Empty:
+```c++ //
     if (mySet.empty()) {
         cout << "Set is empty" << endl;
     }
@@ -76,6 +86,7 @@
 
 
 # Iterators:
+```c++ //
     auto it = mySet.begin(); // Iterator to the beginning of the set
     auto endIt = mySet.end(); // Iterator just past the end of the set
 
@@ -89,6 +100,7 @@
 
 
 # Finding and Counting Elements:
+```c++ //
     auto foundIt = mySet.find(5); // Find element 5
     if (foundIt != mySet.end()) {
         cout << "Element 5 found in the set" << endl;
@@ -101,6 +113,7 @@
 
 
 # Lower and Upper Bounds:
+```c++ //
     auto lower = mySet.lower_bound(3); // Iterator to the first element not less than 3
     auto upper = mySet.upper_bound(7); // Iterator to the first element greater than 7
 
@@ -116,6 +129,7 @@
 
 
 # Range-based For Loop:
+```c++ //
     for (const auto& elem : mySet) {  cout << elem << " ";
     }
     cout << endl;
@@ -124,6 +138,7 @@
 
 
 # Custom Comparator:
+```c++ //
     // Custom comparator for case-insensitive comparison of strings
     struct CaseInsensitiveCompare {
         bool operator()(const string& a, const string& b) const {
