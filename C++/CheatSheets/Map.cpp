@@ -61,5 +61,89 @@ int main() {
     // Clearing the map (O(n))
     myMap.clear();
 
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------
+
+
+
+    // Declaration and initialization of a map
+    myMap = {
+        {1, "apple"},
+        {2, "banana"},
+        {3, "orange"},
+        {4, "pear"}
+    };
+
+    // Accessing elements using operator[]
+    cout << "myMap[2]: " << myMap[2] << endl; // Output: "banana"
+
+    // Insertion using insert or emplace
+    myMap.insert({5, "grape"});
+    myMap.emplace(6, "melon");
+
+    // Size of the map
+    cout << "Size of myMap: " << myMap.size() << endl;
+
+    // Iterating through all elements using iterators
+    cout << "All elements in myMap:" << endl;
+    for (auto it = myMap.begin(); it != myMap.end(); ++it) {
+        cout << it->first << ": " << it->second << endl;
+    }
+
+    // Checking existence of a key
+    if (myMap.find(3) != myMap.end()) {
+        cout << "Key 3 exists in myMap" << endl;
+    }
+
+    // Counting occurrences of a key
+    cout << "Count of key 4 in myMap: " << myMap.count(4) << endl;
+
+    // Deleting elements by key
+    myMap.erase(5);
+
+    // Deleting elements by range (C++17)
+    auto it = myMap.find(3);
+    if (it != myMap.end()) {
+        myMap.erase(it); // Erase element at iterator position
+    }
+
+    // Checking if map is empty
+    cout << "Is myMap empty? " << (myMap.empty() ? "Yes" : "No") << endl;
+
+    // Finding elements by value
+    string searchValue = "orange";
+    auto valueIt = find_if(myMap.begin(), myMap.end(),
+                           [&searchValue](const pair<int, string>& p) {
+                               return p.second == searchValue;
+                           });
+    if (valueIt != myMap.end()) {
+        cout << "Key with value '" << searchValue << "' found: "
+             << valueIt->first << endl;
+    } else {
+        cout << "Value '" << searchValue << "' not found in myMap" << endl;
+    }
+
+    // Clearing the map
+    myMap.clear();
+
+    // Using stream insertion to print map elements (C++17)
+    map<int, string> anotherMap = {
+        {10, "one"},
+        {20, "two"},
+        {30, "three"}
+    };
+    // cout << "Another map elements: ";
+    // copy(anotherMap.begin(), anotherMap.end(),
+    //      ostream_iterator<pair<const int, string>>(cout, ", "));
+    // cout << endl;
+
+
     return 0;
 }
