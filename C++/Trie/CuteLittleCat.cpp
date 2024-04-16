@@ -34,14 +34,15 @@ public:
         temp->isTerminal = true;
     }
 
-    void searchHelper()
+    void searchHelper(){
+
+    }
 
     bool documentSearch(string document, string[] words) {
         Trie t;
         for(auto x: words) {
             t.insert(x);
         }
-
         
     }
 
