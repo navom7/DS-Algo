@@ -42,5 +42,34 @@ int main() {
     //v1 size becomes 8 and v2 size becomes 4
     vec.swap(vec2);                                          // O(1) constant time swap of internal data
 
+
+
+    vector<int> numbers = {10, 20, 30, 40, 50, 30, 20, 10};
+
+    int target = 30; // Element to search for
+
+    // Find the first occurrence of 'target' in the vector
+    auto firstOccurrence = find(numbers.begin(), numbers.end(), target);
+
+    // Find the last occurrence of 'target' in the vector
+    auto lastOccurrence = find_end(numbers.begin(), numbers.end(), 
+                                    &target, &target + 1);
+
+    if (firstOccurrence != numbers.end()) {
+        cout << "First occurrence of " << target << " at index: " 
+             << distance(numbers.begin(), firstOccurrence) << endl;
+    } else {
+        cout << "Element " << target << " not found in the vector." << endl;
+    }
+
+    if (lastOccurrence != numbers.end()) {
+        cout << "Last occurrence of " << target << " at index: " 
+             << distance(numbers.begin(), lastOccurrence) << endl;
+    } else {
+        cout << "Element " << target << " not found in the vector." << endl;
+    }
+
+
+
     return 0;
 }

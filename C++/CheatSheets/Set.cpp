@@ -2,6 +2,16 @@
 #include <iostream>
 using namespace std;
 
+// Define a custom comparator class where larger elements appear first
+class CompareGreater {
+public:
+    bool operator() (int a, int b) const {
+        return a > b; // Use '>' for descending order (largest first)
+    }
+};
+
+
+
 int main() {
     // Initialization
     set<int> mySet; // O(1)
@@ -59,6 +69,28 @@ int main() {
         cout << elem << " ";
     }
     cout << endl;
+
+
+
+
+
+
+
+    set<int, CompareGreater> descendingSet;
+
+    // Insert elements into the set
+    descendingSet.insert(10);
+    descendingSet.insert(30);
+    descendingSet.insert(20);
+    descendingSet.insert(50);
+
+    // Iterate over the set (now in descending order)
+    cout << "Elements in descending order:" << endl;
+    for (const auto& elem : descendingSet) {
+        cout << elem << endl;
+    }
+
+
 
     return 0;
 }
